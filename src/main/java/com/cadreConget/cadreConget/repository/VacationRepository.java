@@ -11,5 +11,5 @@ import java.util.List;
 
 @Repository
 public interface VacationRepository extends JpaRepository<Vacation, Long> {
-    List<Vacation> findAllByManager(Manager manager);
+   List<Vacation> findAllByManager(Manager manager);
 }

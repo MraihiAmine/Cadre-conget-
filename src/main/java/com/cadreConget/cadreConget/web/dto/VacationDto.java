@@ -5,15 +5,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.Instant;
+import java.util.Date;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Data
 public class VacationDto {
-    private Long id;
+    private String cause;
+    private Date startDate;
+    private Date endDate;
     private Long managerId;
-    private Instant startDate;
-    private Instant endDate;
-    private String username;
 }

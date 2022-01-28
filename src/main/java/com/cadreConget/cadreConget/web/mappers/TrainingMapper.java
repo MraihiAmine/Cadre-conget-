@@ -6,14 +6,13 @@ import com.cadreConget.cadreConget.web.dto.TrainingDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper
-public interface TrainingMapper {
-    @Mapping(target = "id", ignore = true)
-    @Mapping(target = "startDate", source = "trainingDto.startDate")
-    @Mapping(target = "endDate", source = "trainingDto.endDate")
-    @Mapping(target = "manager", source = "manager")
-    Training map(TrainingDto trainingDto, Manager manager);
+import java.util.List;
 
-    @Mapping(target = "managerId", expression = "java(training.getManager().getManagerId())")
-    TrainingDto mapToDto(Training training);
+@Mapper(componentModel = "spring")
+public interface TrainingMapper {
+   @Mapping(target = "managerId", expression = "java(training.getManager().getManagerId())")
+   TrainingDto toTrainingDto(Training training);
+   List<TrainingDto> toTrainingDTOs(List<Training> trainings);
+   @Mapping(target = "manager", source = "manager")
+   Training toTraining(TrainingDto trainingDto, Manager manager);
 }
